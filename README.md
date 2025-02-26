@@ -26,3 +26,35 @@ in the repo***
 Follow these *simple steps*:
 
 <img src="Pic/1.png">
+
+***
+
+<img src="Pic/2.png">
+
+***
+
+<img src="Pic/3.png">
+
+***
+
+<img src="Pic/4.png">
+
+***
+
+<img src="Pic/5.png">
+
+***
+
+<img src="Pic/6.png">
+
+***
+
+<img src="Pic/7.png">
+
+***
+
+<img src="Pic/8.png">
+
+***
+
+Well donne ! :hearts:
