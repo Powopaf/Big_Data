@@ -29,6 +29,7 @@ Follow these *simple steps*:
 
 ***
 
+Clik on the arrow and select `Draft pull request`
 <img src="Pic/2.png">
 
 ***
@@ -37,10 +38,13 @@ Follow these *simple steps*:
 
 ***
 
+When finish click ready for review (you will not have this step if you did not
+create a `draft pull request`)
 <img src="Pic/4.png">
 
 ***
 
+Click the arrow and select squash and merge
 <img src="Pic/5.png">
 
 ***
