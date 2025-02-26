@@ -25,4 +25,4 @@ in the repo***
 ### How to open a pull request ?
 Follow these *simple steps*:
 
-<img src="Pic/1.png" width="1000" height="500">
+<img src="Pic/1.png">
