@@ -12,9 +12,17 @@ Chinese project on Big Data
 1. do `git pull` before starting working on the project
 2. `git branch` to know on witch branch you are
 3. `git checkout -b <branch name>` to create a branch
-4. `open your pull request in draft mode when you do the first push on your branch
+4. open your pull request in draft mode when you do the first push on your branch
     everyone can see what you are doing and can help you on your code
 5. `git checkout <branch name>` or `git swich <branch name>` to swich branch (do
    git branch after to be sure :) )
 6. when finish squash an merge your banch (pray you don't have conflict)
 7. TODO add the photo tuto on how to open and close pull request
+## To open a pull request
+### Why open a pull request ?
+If you don't open a pull request you ***you will not be able to submit your work
+in the repo***
+### How to open a pull request ?
+Follow these *simple steps*:
+
+<img src="Pic/1.png" width="100" height="50">
