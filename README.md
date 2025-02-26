@@ -38,7 +38,7 @@ Clik on the arrow and select `Draft pull request`
 
 ***
 
-When finish click ready for review (you will not have this step if you did not
+When finish click `ready for review` (you will not have this step if you did not
 create a `draft pull request`)
 <img src="Pic/4.png">
 
