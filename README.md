@@ -10,8 +10,19 @@ The app will fectch the data on it's own.
 <warning>Can change</warning>
 The code will be in python. We will use the `polars` librairy to do the query on the data base.
 
+# Task
 
+## Paf
 
+1. Thing with stating point and end point draw the path in map
+
+## Diana & tasodio
+
+1. search fast way to fetch from .parquet file :) (very fast)
+
+## Sofia(Sonia)
+
+1. Search how we can handle the data base (HDFS) (shit with nodes)²
 
 # Help
 
