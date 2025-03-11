@@ -1,10 +1,11 @@
 import folium
+import openrouteservice
 
-def createMap(coords, output="mapNYC.html") -> None:
-    nyc_map: any = folium.Map(location=(40.7128, -74.0060), zoom_start=12)
-    for lat, lon in coords:
-        folium.CircleMarker(location=(lat, lon), radius=1, color="red", fill=True, fill_color="red").add_to(nyc_map)
-    nyc_map.save(output)
+def drawMap(coord, output="map.html"):
+    client = openrouteservice.Client(key='5b3ce3597851110001cf6248d8243e72d99c47a191d51dac7853e5e0')
+    routes = client.directions(coordinates=coord, profile='driving-car', format='geojson')
+    print(routes)
 
-if __name__ == '__main__':
-    createMap([(40.721567,-73.991957), (40.695922, -73.993803)])
+if __name__ == "__main__":
+    coord = ((-122.4183, 37.7750), (-122.4187, 37.7753))
+    drawMap(coord)

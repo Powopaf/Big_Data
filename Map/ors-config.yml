@@ -1,0 +1,8 @@
+ors:
+  engine:
+    profile_default:
+      build:
+        source_file: new-york-latest.osm.pbf
+    profiles:
+      driving-car:
+        enabled: true
