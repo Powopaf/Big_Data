@@ -1,6 +1,6 @@
-Map/graphs/
-Map/elevation_cache/
-Map/4
+graphs/
+elevation_cache/
+log/
 *.swp
 *.osm.pbf
 *.parquet
