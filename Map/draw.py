@@ -9,8 +9,8 @@ MAP = "trip_map.html"
 # See botom of the file with the main to know what the trips var should look
 # like
 def draw_trips_map(trips, output_file=MAP):
-    m = folium.Map(location=[trips[0][0][1], trips[0][0][0]], zoom_start=13)
     
+    m = folium.Map(location=[trips[0][0][1], trips[0][0][0]], zoom_start=13)
     for i, coordinates in enumerate(trips):
         
         data = {
