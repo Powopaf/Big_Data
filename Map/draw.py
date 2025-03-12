@@ -4,8 +4,11 @@ import openrouteservice
 
 URL = "http://localhost:8082/ors/v2/directions/driving-car"
 HEADERS: dict[str, str] = {"Content-Type": "application/json"}
+MAP = "trip_map.html"
 
-def draw_trips_map(trips, output_file="trips_map.html"):
+# See botom of the file with the main to know what the trips var should look
+# like
+def draw_trips_map(trips, output_file=MAP):
     m = folium.Map(location=[trips[0][0][1], trips[0][0][0]], zoom_start=13)
     
     for i, coordinates in enumerate(trips):
@@ -38,3 +41,4 @@ if __name__ == "__main__":
         [[-74.00158, 40.719382], [-73.996558, 40.731849]]
     ]
     draw_trips_map(trips)
+
