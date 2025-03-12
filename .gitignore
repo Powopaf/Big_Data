@@ -1,7 +1,15 @@
+Map/graphs/
+Map/elevation_cache/
+Map/4
+*.swp
+*.osm.pbf
 *.parquet
 bin/
 lib64
 pyvenv.cfg
+*.html
+*.png
+share/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
