@@ -1,3 +1,4 @@
+*.png
 graphs/
 elevation_cache/
 log/
