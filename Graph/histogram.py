@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 
-def histo(data: list[int], output_name="hitorigram.png"):
+def histo(data: list[int], output_name="historigram.png"):
     plt.figure(figsize=(8, 6))
     plt.hist(data, len(data), color="blue", edgecolor="black", align="mid")
     plt.xlabel("Passenger Count")
