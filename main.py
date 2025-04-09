@@ -1,12 +1,17 @@
-import pandas as pd
+from pyhive import hive
 
-# Path to your Parquet file
-file_path = "yellow_tripdata_2009-01.parquet"
+# Connect to Hive
+conn = hive.Connection(host='localhost', port=10000, username='hive')
+cursor = conn.cursor()
 
-# Load the Parquet file
-df = pd.read_parquet(file_path)
+# Execute a query
+cursor.execute('SELECT * FROM my_table LIMIT 10')
 
-# Print only the column names
-for col in df.columns:
-    print(col)
+# Get column names
+columns = [desc[0] for desc in cursor.description]
+print("Column names:", columns)
+
+# Print rows
+for row in cursor.fetchall():
+    print(row)
 
