@@ -56,39 +56,39 @@ in the repo***
 
 Follow these *simple steps*:
 
-<img src="Pic/1.png">
+<img src="pic/1.png">
 
 ***
 
 Clik on the arrow and select `Draft pull request`
-<img src="Pic/2.png">
+<img src="pic/2.png">
 
 ***
 
-<img src="Pic/3.png">
+<img src="pic/3.png">
 
 ***
 
 When finish click `ready for review` (you will not have this step if you did not
 create a `draft pull request`)
-<img src="Pic/4.png">
+<img src="pic/4.png">
 
 ***
 
 Click the arrow and select squash and merge
-<img src="Pic/5.png">
+<img src="pic/5.png">
 
 ***
 
-<img src="Pic/6.png">
+<img src="pic/6.png">
 
 ***
 
-<img src="Pic/7.png">
+<img src="pic/7.png">
 
 ***
 
-<img src="Pic/8.png">
+<img src="pic/8.png">
 
 ***
 
