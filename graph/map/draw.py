@@ -32,7 +32,7 @@ def draw_trips_map(trips, output_file=MAP):
 
     m.save(output_file)
     print(f"Map saved as {output_file}")
-
+"""
 if __name__ == "__main__":
     trips = [
         [[-73.991957, 40.721567], [-73.993803, 40.695922]],
@@ -42,4 +42,4 @@ if __name__ == "__main__":
         [[-74.00158,  40.719382], [-73.996558, 40.731849]]
     ]
     draw_trips_map(trips)
-
+"""
