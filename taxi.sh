@@ -1,6 +1,6 @@
 #!/bin/bash
 
-:
+
 Help () {
     echo "taxi trip YYYY-YYYY"
 }
@@ -24,8 +24,11 @@ if [ "$#" -lt 2 -o "$#" -gt 2 ]; then
     exit 1
 fi
 
-if [ "$1" = "taxi" ]; then
+if [ "$1" = "trip" ]; then
     CheckDate "$2"
     echo "python3 -m main $1 $2"
+else
+    HELP
+    exit 1
 fi
 exit 0
