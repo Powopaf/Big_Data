@@ -6,9 +6,10 @@ URL = "http://localhost:8082/ors/v2/directions/driving-car"  # path specifies th
 HEADERS = {"Content-Type": "application/json"}
 MAP = "trip_map.html"
 
-def draw_trips_map(trips, output_file=MAP):
-    m = folium.Map(location=[trips[0][0][1], trips[0][0][0]], zoom_start=13)
-    
+def draw_trips_map(trips, m=None, output_file=MAP):
+    if m is None:
+        m = folium.Map(location=[trips[0][0][1], trips[0][0][0]], zoom_start=13)
+
     for i, coordinates in enumerate(trips):
         data = {
             "coordinates": coordinates,
@@ -32,6 +33,7 @@ def draw_trips_map(trips, output_file=MAP):
 
     m.save(output_file)
     print(f"Map saved as {output_file}")
+    return m
 """
 if __name__ == "__main__":
     trips = [
