@@ -4,7 +4,7 @@ def pie_payment(pay: list[str], output_file="pie_payment.png"):
     l = ["Cash", "Credit"]
     c = 0
     for i in pay:
-        if i.lower() == "cash":
+        if "cas" in i.lower():
             c += 1
     sizes = [c, len(pay) - c]
     plt.figure(figsize=(8, 6))
@@ -15,7 +15,7 @@ def pie_payment(pay: list[str], output_file="pie_payment.png"):
     print(f"Success creating pie chart {output_file}")
 
 
-
+"""
 if __name__ == '__main__':
     a = [
     "Cash", "Credit", "CASH", "credit", "Credit", "cash", 
@@ -24,4 +24,4 @@ if __name__ == '__main__':
     "credit transaction", "Cash withdrawal", "Credit refund", 
     "cashback", "credit balance", "CREDIT PURCHASE" ]
     pie_payment(a)
-
+"""

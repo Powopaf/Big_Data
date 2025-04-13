@@ -8,7 +8,8 @@ MAP = "HeatMap.html"
 
 def draw_heat(coordinates, output_file=MAP):
     m = folium.Map(location=NYC, zoom_start=13)
-    HeatMap(coordinates, radius=12, blur=8, min_opacity=0.3).add_to(m)
+    for coords in coordinates:
+        folium.Marker(location=coords).add_to(m)
     m.save(output_file)
     print(f"HeatMap save as {output_file}")
 """
