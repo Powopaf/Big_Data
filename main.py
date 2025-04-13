@@ -8,6 +8,7 @@ import graph.bar_char as bar
 import graph.heatMap as hmap
 import graph.histogram as hist
 import graph.pieChart as pieC
+import graph.scatter_plot as scatter
 import sys
 
 CONF = SparkConf() \
@@ -109,6 +110,9 @@ def query_pie(all_df):
             pieC.pie_payment(use, "Payment_Type2010.png")
         else:
             print("TODO")
+
+def query_scatter(all_df):
+    pass
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
