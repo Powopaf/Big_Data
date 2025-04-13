@@ -7,6 +7,7 @@ import graph.map.draw as draw_mod
 import graph.bar_char as bar
 import graph.heatMap as hmap
 import graph.histogram as hist
+import graph.pieChart as pieC
 import sys
 
 CONF = SparkConf() \
@@ -94,6 +95,21 @@ def query_histo(all_df):
         else:
             print("error")
 
+def query_pie(all_df):
+    for year, df in all_df:
+        if year == "2009":
+            df_pie = df.select("Payment_Type").limit(1000000)
+            rows = df_pie.collect()
+            use = [row.Payment_Type for row in rows]
+            pieC.pie_payment(use, "Payment_Type2009.png")
+        elif year == "2010":
+            df_pie = df.select("payment_type").limit(1000000)
+            rows = df_pie.collect()
+            use = [row.payment_type for row in rows]
+            pieC.pie_payment(use, "Payment_Type2010.png")
+        else:
+            print("TODO")
+
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print("Usage is taxi arg1 arg2")
@@ -106,5 +122,7 @@ if __name__ == '__main__':
         query_heat(parse_years(sys.argv[2]))
     elif sys.argv[1] == "hist":
         query_histo(parse_years(sys.argv[2]))
+    elif sys.argv[1] == "pay":
+        query_pie(parse_years(sys.argv[2]))
     else:
         print("error")
