@@ -5,6 +5,7 @@ from pyspark.sql import SparkSession
 from pyspark.sql.functions import array, col
 import graph.map.draw as draw_mod
 import graph.bar_char as bar
+import graph.heatMap as hmap
 import sys
 
 CONF = SparkConf() \
@@ -34,8 +35,7 @@ def query_trip(all_df):
                     array(col("Start_Lon"), col("Start_Lat")),
                     array(col("End_Lon"), col("End_Lat"))
                 ).alias("trip")).limit(2500)
-         
-            trips_list = df_trips.collect()           
+                    
             trips_list = [row.trip for row in df_trips.collect()] 
             m = draw_mod.draw_trips_map(trips_list)
         else:
@@ -68,6 +68,16 @@ def query_fare_vendor(all_df):
         else:
             print("error")
 
+def query_heat(all_df):
+    for year, df in all_df:
+        if year == "2009":
+            df_heat = df.select("Start_Lon", "Start_Lat").limit(5000)
+            rows = df_heat.collect()
+            heat = [[row.Start_Lat, row.Start_Lon] for row in rows]
+            hmap.draw_heat(heat)
+        else:
+            print("Not finihs")
+
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print("Usage is taxi arg1 arg2")
@@ -76,5 +86,7 @@ if __name__ == '__main__':
         query_trip(parse_years(sys.argv[2]))
     elif sys.argv[1] == "fare":
         query_fare_vendor(parse_years(sys.argv[2]))
+    elif sys.argv[1] == "heat":
+        query_heat(parse_years(sys.argv[2]))
     else:
         print("error")
