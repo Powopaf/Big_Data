@@ -6,6 +6,7 @@ from pyspark.sql.functions import array, col
 import graph.map.draw as draw_mod
 import graph.bar_char as bar
 import graph.heatMap as hmap
+import graph.histogram as hist
 import sys
 
 CONF = SparkConf() \
@@ -22,7 +23,7 @@ def parse_years(years):
     if "-" not in years:
         l.append((years, SPARK.read.parquet(f"data/{years}/*")))
     else:
-        actives = years.split("-")
+        s = years.split("-")
         for y in s:
             l.append((y, SPARK.read.parquet(f"data/{y}/*")))
     return l
@@ -45,25 +46,20 @@ def query_fare_vendor(all_df):
     for year, df in all_df:
         if year == "2009":
             df_fare = df.select("vendor_name",
-            "Total_Amt").groupBy("vendor_name").agg(F.sum("Total_Amt").alias("total_fare")).limit(10000)
+            "Total_Amt").groupBy("vendor_name").agg(F.sum("Total_Amt").alias("total_fare"))
             rows = df_fare.collect()
-            vendors, fares = zip(*[(row.vendor_name, row.total_fare) for row in
-                                   rows])            
+            vendors, fares = zip(*[(row.vendor_name, row.total_fare) for row in rows])
             bar.fare_vendor(list(vendors), list(fares), "fare_vendor_2009.png")
         elif year == "2010":
             df.printSchema()
-            df_fare = df.select("vendor_id",
-                                "total_amount").groupby("vendor_id").agg(F.sum("total_amount").alias("total_fare")).limit(10000)
+            df_fare = df.select("vendor_id", "total_amount").groupby("vendor_id").agg(F.sum("total_amount").alias("total_fare"))
             rows = df_fare.collect()
-            vendors, fares = zip(*[(row.vendor_id, row.total_fare) for row in
-                                   rows])
+            vendors, fares = zip(*[(row.vendor_id, row.total_fare) for row in rows])
             bar.fare_vendor(list(vendors), list(fares), "fare_vendor_2010.png")
         elif year == "2011":
-            df_fare = df.select("VendorID",
-                                "total_amount").groupby("VendorID").agg(F.sum("total_amount").alias("total_fare")).limit(10000)
+            df_fare = df.select("VendorID", "total_amount").groupby("VendorID").agg(F.sum("total_amount").alias("total_fare"))
             rows = df_fare.collect()
-            vendors, fare = zip(*[(row.VendorID, row.total_fare) for row in
-                                  rows])
+            vendors, fare = zip(*[(row.VendorID, row.total_fare) for row in rows])
             bar.fare_vendor(list(vendors), list(fare), "fare_vendor_2011.png")
         else:
             print("error")
@@ -78,6 +74,26 @@ def query_heat(all_df):
         else:
             print("Not finihs")
 
+def query_histo(all_df):
+    for year, df in all_df:
+        if year == "2009":
+            df_hist = df.select("Passenger_Count").limit(10000)
+            rows = df_hist.collect()
+            nb_passengers = [row.Passenger_Count for row in rows]
+            hist.histo(nb_passengers, "nb_passengers2009.png")
+        elif year == "2010":
+            df_hist = df.select("passenger_count").limit(10000)
+            rows = df_hist.collect()
+            nb_passengers = [row.passenger_count for row in rows]
+            hist.histo(nb_passengers, "nb_passengers2010.png")
+        elif year == "2011":
+            df_hist = df.select("passenger_count").limit(10000)
+            rows = df_hist.collect()
+            nb_passengers = [row.passenger_count for row in rows]
+            hist.histo(nb_passengers, "nb_passengers2011.png")
+        else:
+            print("error")
+
 if __name__ == '__main__':
     if len(sys.argv) != 3:
         print("Usage is taxi arg1 arg2")
@@ -88,5 +104,7 @@ if __name__ == '__main__':
         query_fare_vendor(parse_years(sys.argv[2]))
     elif sys.argv[1] == "heat":
         query_heat(parse_years(sys.argv[2]))
+    elif sys.argv[1] == "hist":
+        query_histo(parse_years(sys.argv[2]))
     else:
         print("error")
