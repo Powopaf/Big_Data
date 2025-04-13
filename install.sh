@@ -15,8 +15,9 @@ if ! command -v python3 &>/dev/null; then
     exit 1
 fi
 mkdir -p "$SHARE_DIR"
+sudo touch "$SHARE_DIR/__init__.py"
 cp "$PYTHON_FILE" "$SHARE_DIR/main.py"
 cp "$SCRIPT_FILE" "$INSTALL_DIR/$SCRIPT_NAME"
 chmod +x "$INSTALL_DIR/$SCRIPT_NAME"
-sed -i "s|PYTHON_FILE=.*|PYTHON_SCRIPT=\"$SHARE_DIR/taxi.sh\"|" "$INSTALL_DIR/$SCRIPT_NAME"
+sed -i "s|PYTHON_FILE=.*|PYTHON_FILE=\"$SHARE_DIR/main.py\"|" "$INSTALL_DIR/$SCRIPT_NAME"
 echo "$SCRIPT_NAME installed!"

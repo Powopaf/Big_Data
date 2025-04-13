@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export PYTHONPATH="/usr/local/taxi:$PYTHONPATH"
 
 Help () {
     echo "taxi trip YYYY-YYYY"
@@ -48,7 +49,7 @@ elif [ "$1" = "pay" ]; then
     CheckDate "$2"
     python3 -m main "$1" "$2"
 else
-    HELP
+    Help
     exit 1
 fi
 exit 0
